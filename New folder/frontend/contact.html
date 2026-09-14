@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Us – Midwest Supplies</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --dark: #1a1512;
+            --orange: #e8791f;
+            --cream: #f7f1e6;
+            --cream-2: #efe6d4;
+            --text: #2b2420;
+            --muted: #6b6058;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background: var(--cream);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1,
+        h2 {
+            font-family: 'Oswald', sans-serif;
+        }
+
+        /* HEADER */
+        .site-header {
+            background: var(--dark);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            padding: 10px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .site-header .container {
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .site-logo a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .site-logo img {
+            height: 56px;
+            width: auto;
+        }
+
+        .nav-primary {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-primary a {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--cream);
+            padding: 10px 22px;
+            border-radius: 6px;
+            transition: 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-primary a:hover,
+        .nav-primary a.active {
+            background: var(--orange);
+            color: #1a1512;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            color: var(--cream);
+            cursor: pointer;
+            padding: 4px 8px;
+        }
+
+        .nav-toggle .close-icon {
+            display: none;
+        }
+
+        .nav-toggle.open .menu-icon {
+            display: none;
+        }
+
+        .nav-toggle.open .close-icon {
+            display: inline;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 70px 20px;
+            position: relative;
+            overflow: hidden;
+            background: var(--dark);
+        }
+
+        .hero__slider,
+        .hero__slide {
+            position: absolute;
+            inset: 0;
+        }
+
+        .hero__slide {
+            background-position: center;
+            background-size: cover;
+            opacity: 0;
+            transition: opacity 0.7s ease;
+        }
+
+        .hero__slide::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg,
+                    rgba(20, 16, 13, 0.75),
+                    rgba(20, 16, 13, 0.9));
+        }
+
+        .hero__slide.is-active {
+            opacity: 1;
+        }
+
+        .hero__controls {
+            position: absolute;
+            z-index: 2;
+            bottom: 22px;
+            left: 50%;
+            display: flex;
+            gap: 10px;
+            transform: translateX(-50%);
+        }
+
+        .hero__dot {
+            width: 10px;
+            height: 10px;
+            padding: 0;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .hero__dot.is-active {
+            background: var(--orange);
+            border-color: var(--orange);
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+        }
+
+        .hero .eyebrow {
+            display: inline-block;
+            color: var(--orange);
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            opacity: 0.85;
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* CONTACT */
+        .contact-wrap {
+            padding: 50px 0 70px;
+        }
+
+        .quick-contact {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .quick-contact a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #fff;
+            border: 1px solid rgba(20, 16, 13, 0.1);
+            padding: 14px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.92rem;
+            box-shadow: 0 4px 16px rgba(20, 16, 13, 0.05);
+            transition: 0.2s;
+        }
+
+        .quick-contact a:hover {
+            border-color: var(--orange);
+            transform: translateY(-2px);
+        }
+
+        .quick-contact i {
+            color: var(--orange);
+            font-size: 1.1rem;
+        }
+
+        /* FORM */
+        .request-form {
+            background: #fff;
+            padding: 40px 36px;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(20, 16, 13, 0.06);
+            border: 1px solid rgba(20, 16, 13, 0.06);
+        }
+
+        .request-form h2 {
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+            color: var(--dark);
+        }
+
+        .request-form .form-sub {
+            color: var(--muted);
+            margin-bottom: 26px;
+            font-size: 0.93rem;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #e0dccf;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            background: var(--cream);
+            transition: border 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--orange);
+            box-shadow: 0 0 0 4px rgba(232, 121, 31, 0.12);
+            background: #fff;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            font-size: 1rem;
+            font-weight: 700;
+            background: var(--orange);
+            color: #1a1512;
+            border: 2px solid var(--orange);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.25s ease;
+            margin-top: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-submit:hover {
+            background: transparent;
+            color: var(--orange);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .form-status {
+            margin-top: 14px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: none;
+            padding: 12px 14px;
+            border-radius: 8px;
+        }
+
+        .form-status.show {
+            display: block;
+        }
+
+        .form-status.success {
+            background: #e7f5ea;
+            color: #1f7a3d;
+        }
+
+        .form-status.error {
+            background: #fbeaea;
+            color: #b3261e;
+        }
+
+        /* FOOTER */
+        .site-footer {
+            background: var(--dark);
+            color: rgba(255, 255, 255, 0.75);
+            padding: 50px 0 0;
+            margin-top: 20px;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 34px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-brand img {
+            height: 60px;
+            width: auto;
+            margin-bottom: 14px;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            max-width: 340px;
+            line-height: 1.7;
+            opacity: 0.7;
+        }
+
+        .site-footer h4 {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .site-footer ul {
+            list-style: none;
+        }
+
+        .site-footer ul li {
+            margin-bottom: 10px;
+        }
+
+        .site-footer ul a {
+            color: rgba(255, 255, 255, 0.65);
+            transition: color 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .site-footer ul a:hover {
+            color: var(--orange);
+        }
+
+        .footer-bottom {
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.55;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-primary {
+                display: none;
+                flex-direction: column;
+                gap: 4px;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--dark);
+                padding: 12px 20px 18px;
+            }
+
+            .nav-primary.open {
+                display: flex;
+            }
+
+            .nav-primary a {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero {
+                min-height: 45vh;
+                padding: 55px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .form-row-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .request-form {
+                padding: 26px 20px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="container">
+            <div class="site-logo">
+                <a href='/'>
+                    <img src="./midwest-supplies-logo.png" alt="Midwest Supplies">
+                </a>
+            </div>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="menu-icon"><i class="fas fa-bars"></i></span>
+                <span class="close-icon"><i class="fas fa-times"></i></span>
+            </button>
+
+            <nav class="nav-primary" id="navPrimary">
+                <a href='./index.html'>Home</a>
+                <a href='./brands.html'>Our Brands</a>
+                <a class='active' href='./contact.html'>Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="main-content">
+        <div class="hero__slider" aria-label="Featured slides">
+            <div class="hero__slide is-active"
+                style="background-image:url('https://images.unsplash.com/photo-1642285709726-f9eb035b034b?fm=jpg&q=60&w=1600&auto=format&fit=crop');">
+            </div>
+            <div class="hero__slide"
+                style="background-image:url('https://images.unsplash.com/photo-1757271453507-bbee317318a8?fm=jpg&q=60&w=1600&auto=format&fit=crop');">
+            </div>
+        </div>
+
+        <div class="container">
+            <span class="eyebrow">Get In Touch</span>
+            <h1>Contact Us</h1>
+            <p>
+                Fill in the form below and we will contact you.
+                We endeavour to answer all inquiries within 24 hours
+                on business days.
+            </p>
+        </div>
+
+        <div class="hero__controls" aria-label="Choose hero slide">
+            <button class="hero__dot is-active" type="button" aria-label="Show slide 1"></button>
+            <button class="hero__dot" type="button" aria-label="Show slide 2"></button>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-wrap">
+        <div class="container">
+
+            <div class="quick-contact">
+                <a href="mailto:sales@mw-supplies.com">
+                    <i class="fas fa-envelope"></i>
+                    sales@mw-supplies.com
+                </a>
+            </div>
+
+            <div class="request-form">
+                <h2>Request Form</h2>
+                <p class="form-sub">
+                    Tell us what you're looking for and a member
+                    of our team will get back to you.
+                </p>
+
+                <form id="contactForm" autocomplete="on">
+
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label for="formName">Name</label>
+                            <input type="text" id="formName" name="name" placeholder="Your name" autocomplete="name"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="formCompany">Company</label>
+                            <input type="text" id="formCompany" name="company" placeholder="Company name"
+                                autocomplete="organization">
+                        </div>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label for="formEmail">Email</label>
+                            <input type="email" id="formEmail" name="email" placeholder="your@email.com"
+                                autocomplete="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="formPhone">Phone</label>
+                            <input type="tel" id="formPhone" name="phone" placeholder="+00 000 000 0000"
+                                autocomplete="tel">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="formSubject">Subject</label>
+                        <input type="text" id="formSubject" name="topic" placeholder="What are you looking for?"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="formMessage">Message</label>
+                        <textarea id="formMessage" name="message"
+                            placeholder="Add part numbers, quantities, or any other details" rows="5"
+                            required></textarea>
+                    </div>
+
+                    <!-- Honeypot: hidden from real visitors, bots often fill it in anyway -->
+                    <div style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true">
+                        <label for="formWebsite">Leave this field empty</label>
+                        <input type="text" id="formWebsite" name="website" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <button type="submit" class="btn-submit" id="submitBtn">Send Request</button>
+
+                    <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="./midwest-supplies-logo.png" alt="Midwest Supplies">
+                <p>
+                    Midwest Supplies is a leading industrial materials
+                    and equipment supplier located in Illinois, USA,
+                    specializing in innovative solutions for the energy
+                    and process industries.
+                </p>
+            </div>
+
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href='/'>Home</a></li>
+                    <li><a href='/brands'>Our Brands</a></li>
+                    <li><a href='/contact'>Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Get In Touch</h4>
+                <ul>
+                    <li><a href="mailto:sales@mw-supplies.com">sales@mw-supplies.com</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Copyright &copy; 2026 Midwest Supplies. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- MOBILE NAVIGATION -->
+    <script>
+        (function () {
+            const toggle = document.getElementById('navToggle');
+            const nav = document.getElementById('navPrimary');
+            if (!toggle || !nav) return;
+
+            toggle.addEventListener('click', function () {
+                nav.classList.toggle('open');
+                toggle.classList.toggle('open');
+            });
+
+            nav.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    nav.classList.remove('open');
+                    toggle.classList.remove('open');
+                });
+            });
+        })();
+    </script>
+
+    <!-- CONTACT FORM: Submits to our own backend API -->
+    <script>
+        (function () {
+            // Point this at your deployed backend, e.g. "https://api.mw-supplies.com/submit-form"
+            const API_URL = 'https://YOUR-BACKEND-DOMAIN/submit-form';
+
+            const form = document.getElementById('contactForm');
+            const btn = document.getElementById('submitBtn');
+            const status = document.getElementById('formStatus');
+
+            if (!form || !btn || !status) return;
+
+            function showStatus(message, type) {
+                status.textContent = message;
+                status.className = 'form-status show ' + type;
+            }
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                btn.disabled = true;
+                btn.textContent = 'Sending...';
+                status.className = 'form-status';
+
+                const payload = {
+                    name: document.getElementById('formName').value,
+                    company: document.getElementById('formCompany').value,
+                    email: document.getElementById('formEmail').value,
+                    phone: document.getElementById('formPhone').value,
+                    subject: document.getElementById('formSubject').value,
+                    message: document.getElementById('formMessage').value,
+                    website: document.getElementById('formWebsite').value, // honeypot, should stay empty
+                    pageUrl: window.location.href
+                };
+
+                fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                })
+                    .then(function (response) {
+                        return response.json().then(function (data) {
+                            if (!response.ok || !data.ok) {
+                                throw new Error(data.error || 'Request failed');
+                            }
+                            return data;
+                        });
+                    })
+                    .then(function () {
+                        showStatus('Thank you! Your message has been sent successfully. We will get back to you shortly.', 'success');
+                        form.reset();
+                    })
+                    .catch(function (error) {
+                        console.log('FAILED...', error);
+                        showStatus('Failed to send your request. Please try again or email sales@mw-supplies.com directly.', 'error');
+                    })
+                    .finally(function () {
+                        btn.disabled = false;
+                        btn.textContent = 'Send Request';
+                    });
+            });
+        })();
+    </script>
+
+    <!-- HERO SLIDER -->
+    <script>
+        (function () {
+            const slides = document.querySelectorAll('.hero__slide');
+            const dots = document.querySelectorAll('.hero__dot');
+
+            if (slides.length < 2) return;
+
+            let current = 0;
+
+            function showSlide(index) {
+                current = index;
+                slides.forEach(function (slide, i) {
+                    slide.classList.toggle('is-active', i === current);
+                });
+                dots.forEach(function (dot, i) {
+                    dot.classList.toggle('is-active', i === current);
+                });
+            }
+
+            dots.forEach(function (dot, index) {
+                dot.addEventListener('click', function () {
+                    showSlide(index);
+                });
+            });
+
+            window.setInterval(function () {
+                showSlide((current + 1) % slides.length);
+            }, 5000);
+        })();
+    </script>
+
+</body>
+
+</html>

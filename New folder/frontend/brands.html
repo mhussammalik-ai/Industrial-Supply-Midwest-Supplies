@@ -1,0 +1,1115 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Our Brands | Midwest Supplies</title>
+  <meta name="description"
+    content="Explore the full range of trusted industrial brands and manufacturers supplied by Midwest Supplies.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --dark: #1a1512;
+      --dark-2: #241d18;
+      --orange: #e8791f;
+      --orange-dark: #c8620f;
+      --cream: #f7f1e6;
+      --cream-2: #efe6d4;
+      --text: #2b2420;
+      --muted: #6b6058;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: .01em;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 34px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: .95rem;
+      cursor: pointer;
+      border: 2px solid var(--orange);
+      transition: .25s ease;
+      text-align: center;
+      background: var(--orange);
+      color: #1a1512;
+    }
+
+    .btn:hover {
+      background: transparent;
+      color: var(--orange);
+      transform: translateY(-2px);
+    }
+
+    .site-header {
+      background: var(--dark);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      padding: 10px 0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .15);
+    }
+
+    .site-header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+
+    .site-logo a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .site-logo img {
+      height: 56px;
+      width: auto;
+    }
+
+    .nav-primary {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-primary a {
+      font-weight: 600;
+      font-size: .95rem;
+      color: var(--cream);
+      padding: 10px 22px;
+      border-radius: 6px;
+      transition: .2s;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    .nav-primary a:hover,
+    .nav-primary a.active {
+      background: var(--orange);
+      color: #1a1512;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      color: var(--cream);
+      cursor: pointer;
+      padding: 4px 8px;
+    }
+
+    .nav-toggle .close-icon {
+      display: none;
+    }
+
+    .nav-toggle.open .menu-icon {
+      display: none;
+    }
+
+    .nav-toggle.open .close-icon {
+      display: inline;
+    }
+
+    .hero {
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      padding: 80px 20px;
+      position: relative;
+      overflow: hidden;
+      background: var(--dark);
+    }
+
+    .hero__slider,
+    .hero__slide {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero__slide {
+      background-position: center;
+      background-size: cover;
+      opacity: 0;
+      transition: opacity .7s ease;
+    }
+
+    .hero__slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(20, 16, 13, .75), rgba(20, 16, 13, .9));
+    }
+
+    .hero__slide.is-active {
+      opacity: 1;
+    }
+
+    .hero__controls {
+      position: absolute;
+      z-index: 2;
+      bottom: 24px;
+      left: 50%;
+      display: flex;
+      gap: 10px;
+      transform: translateX(-50%);
+    }
+
+    .hero__dot {
+      width: 10px;
+      height: 10px;
+      padding: 0;
+      border: 1px solid #fff;
+      border-radius: 50%;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .hero__dot.is-active {
+      background: var(--orange);
+      border-color: var(--orange);
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+
+    .hero .eyebrow {
+      display: inline-block;
+      color: var(--orange);
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: .85rem;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -.01em;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      opacity: .85;
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .section-heading {
+      text-align: center;
+      padding: 60px 0 30px;
+      background: #fff;
+    }
+
+    .section-heading h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.3;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .section-heading .divider {
+      width: 100px;
+      height: 2px;
+      background: var(--cream-2);
+      margin: 26px auto 0;
+    }
+
+    .alpha-filter {
+      padding: 20px 0 6px;
+      background: #fff;
+    }
+
+    .alpha-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+      list-style: none;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .alpha-list button {
+      background: #fff;
+      border: 1px solid rgba(20, 16, 13, .12);
+      border-radius: 6px;
+      min-width: 40px;
+      height: 40px;
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: .85rem;
+      color: var(--dark);
+      cursor: pointer;
+      transition: .2s ease;
+      text-transform: uppercase;
+    }
+
+    .alpha-list button:hover:not(.disabled) {
+      border-color: var(--orange);
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .alpha-list button.active {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(232, 121, 31, .25);
+    }
+
+    .alpha-list button.disabled {
+      opacity: .35;
+      cursor: not-allowed;
+      border-color: var(--cream-2);
+      color: var(--muted);
+    }
+
+    .alpha-list button.disabled:hover {
+      background: #fff;
+      border-color: var(--cream-2);
+      color: var(--muted);
+    }
+
+    .brands-tools {
+      padding: 10px 0 20px;
+      background: #fff;
+    }
+
+    .search-container {
+      max-width: 520px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .search-container i {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 1rem;
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 14px 20px 14px 46px;
+      border-radius: 6px;
+      border: 1px solid rgba(20, 16, 13, .15);
+      background: var(--cream);
+      font-family: 'Poppins', sans-serif;
+      font-size: .95rem;
+      color: var(--text);
+      transition: .25s ease;
+      outline: none;
+    }
+
+    .search-input::placeholder {
+      color: var(--muted);
+    }
+
+    .search-input:focus {
+      background: #fff;
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(232, 121, 31, .15);
+    }
+
+    .results-info {
+      text-align: center;
+      font-size: .85rem;
+      color: var(--muted);
+      padding: 0 0 18px;
+      background: #fff;
+      font-weight: 500;
+    }
+
+    .results-info span {
+      color: var(--dark);
+      font-weight: 700;
+    }
+
+    .brands-section {
+      padding: 20px 0 60px;
+      background: #fff;
+    }
+
+    .brand-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .brand-card {
+      background: #fff;
+      border: 1px solid rgba(20, 16, 13, .08);
+      border-left: 3px solid var(--orange);
+      border-radius: 8px;
+      padding: 16px 18px;
+      transition: transform .2s ease, box-shadow .2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      box-shadow: 0 2px 8px rgba(20, 16, 13, .04);
+      cursor: pointer;
+    }
+
+    .brand-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(20, 16, 13, .12);
+      border-left-color: var(--orange-dark);
+    }
+
+    .brand-card .brand-name {
+      font-size: .92rem;
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1.3;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .brand-card .brand-arrow {
+      color: var(--muted);
+      font-size: .75rem;
+      transition: transform .2s ease, color .2s ease;
+      flex-shrink: 0;
+    }
+
+    .brand-card:hover .brand-arrow {
+      color: var(--orange);
+      transform: translateX(4px);
+    }
+
+    .letter-heading {
+      grid-column: 1/-1;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.4rem;
+      color: var(--orange);
+      font-weight: 700;
+      margin: 24px 0 4px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--cream-2);
+      letter-spacing: .05em;
+    }
+
+    .letter-heading:first-child {
+      margin-top: 0;
+    }
+
+    .no-results {
+      grid-column: 1/-1;
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted);
+      font-size: .95rem;
+      background: var(--cream);
+      border-radius: 8px;
+      border: 1.5px dashed var(--cream-2);
+    }
+
+    .no-results i {
+      font-size: 2rem;
+      opacity: .4;
+      margin-bottom: 14px;
+      display: block;
+      color: var(--orange);
+    }
+
+    .pagination-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 40px 0 20px;
+      background: #fff;
+    }
+
+    .pagination-wrap button {
+      min-width: 42px;
+      height: 42px;
+      padding: 0 14px;
+      border-radius: 6px;
+      border: 1px solid rgba(20, 16, 13, .12);
+      background: #fff;
+      color: var(--dark);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: .88rem;
+      cursor: pointer;
+      transition: .2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .pagination-wrap button:hover:not(:disabled):not(.active) {
+      border-color: var(--orange);
+      background: var(--cream);
+      color: var(--orange);
+    }
+
+    .pagination-wrap button.active {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(232, 121, 31, .25);
+    }
+
+    .pagination-wrap button:disabled {
+      opacity: .35;
+      cursor: not-allowed;
+    }
+
+    .pagination-wrap .ellipsis {
+      min-width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .cta-band {
+      background: var(--orange);
+      padding: 50px 0;
+      text-align: center;
+    }
+
+    .cta-band h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #1a1512;
+      margin-bottom: 12px;
+    }
+
+    .cta-band p {
+      color: #1a1512;
+      opacity: .85;
+      max-width: 520px;
+      margin: 0 auto 22px;
+      font-size: .98rem;
+    }
+
+    .cta-band .btn {
+      background: #1a1512;
+      border-color: #1a1512;
+      color: #fff;
+    }
+
+    .cta-band .btn:hover {
+      background: transparent;
+      color: #1a1512;
+      border-color: #1a1512;
+    }
+
+    .site-footer {
+      background: var(--dark);
+      color: rgba(255, 255, 255, .75);
+      padding: 50px 0 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 34px;
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    .footer-brand img {
+      height: 60px;
+      width: auto;
+      margin-bottom: 14px;
+    }
+
+    .footer-brand p {
+      font-size: .9rem;
+      max-width: 340px;
+      line-height: 1.7;
+      opacity: .7;
+    }
+
+    .site-footer h4 {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .site-footer ul {
+      list-style: none;
+    }
+
+    .site-footer ul li {
+      margin-bottom: 10px;
+    }
+
+    .site-footer ul a {
+      color: rgba(255, 255, 255, .65);
+      transition: color .2s;
+      font-size: .9rem;
+    }
+
+    .site-footer ul a:hover {
+      color: var(--orange);
+    }
+
+    .footer-bottom {
+      padding: 20px 0;
+      text-align: center;
+      font-size: .85rem;
+      opacity: .55;
+    }
+
+    @media(max-width:992px) {
+      .brand-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .section-heading h2 {
+        font-size: 1.7rem;
+      }
+    }
+
+    @media(max-width:768px) {
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-primary {
+        display: none;
+        flex-direction: column;
+        gap: 4px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--dark);
+        padding: 12px 20px 18px;
+      }
+
+      .nav-primary.open {
+        display: flex;
+      }
+
+      .nav-primary a {
+        width: 100%;
+        text-align: center;
+      }
+
+      .brand-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .alpha-list button {
+        min-width: 36px;
+        height: 36px;
+        font-size: .78rem;
+        padding: 0 8px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .cta-band h2 {
+        font-size: 1.5rem;
+      }
+
+      .pagination-wrap button {
+        min-width: 36px;
+        height: 36px;
+        font-size: .82rem;
+        padding: 0 10px;
+      }
+
+      .hero {
+        min-height: 40vh;
+        padding: 60px 20px;
+      }
+
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+    }
+
+    @media(max-width:480px) {
+      .brand-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .section-heading h2 {
+        font-size: 1.4rem;
+      }
+
+      .alpha-list {
+        gap: 4px;
+      }
+
+      .alpha-list button {
+        min-width: 32px;
+        height: 32px;
+        font-size: .72rem;
+        padding: 0 6px;
+      }
+
+      .search-input {
+        padding: 12px 16px 12px 42px;
+        font-size: .9rem;
+      }
+
+      .search-container i {
+        left: 15px;
+        font-size: .92rem;
+      }
+
+      .btn {
+        padding: 12px 28px;
+        font-size: .9rem;
+      }
+
+      .pagination-wrap button {
+        min-width: 32px;
+        height: 32px;
+        font-size: .76rem;
+        padding: 0 8px;
+      }
+
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="site-logo">
+        <a href='/'><img src="./midwest-supplies-logo.png" alt="Midwest Supplies"></a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false"
+        aria-controls="navPrimary">
+        <span class="menu-icon"><i class="fas fa-bars" aria-hidden="true"></i></span>
+        <span class="close-icon"><i class="fas fa-times" aria-hidden="true"></i></span>
+      </button>
+      <nav class="nav-primary" id="navPrimary" aria-label="Primary">
+        <a href='./index.html'>Home</a>
+        <a aria-current='page' class='active' href='./brands.html'>Our Brands</a>
+        <a href='./contact.html'>Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="main-content">
+    <div class="hero__slider" aria-label="Featured slides">
+      <div class="hero__slide is-active"
+        style="background-image:url('https://images.unsplash.com/photo-1642285709726-f9eb035b034b?fm=jpg&amp;q=60&amp;w=1600&amp;auto=format&amp;fit=crop');">
+      </div>
+      <div class="hero__slide"
+        style="background-image:url('https://images.unsplash.com/photo-1757271453507-bbee317318a8?fm=jpg&amp;q=60&amp;w=1600&amp;auto=format&amp;fit=crop');">
+      </div>
+    </div>
+    <div class="container">
+      <span class="eyebrow">Our Suppliers</span>
+      <h1>Our Brands</h1>
+      <p>Explore our extensive range of trusted manufacturers and leading industrial brands across the process, energy
+        and industrial sectors.</p>
+    </div>
+    <div class="hero__controls" aria-label="Choose hero slide">
+      <button class="hero__dot is-active" type="button" aria-label="Show slide 1"></button>
+      <button class="hero__dot" type="button" aria-label="Show slide 2"></button>
+    </div>
+  </section>
+
+  <section class="section-heading">
+    <div class="container">
+      <h2>Here is our latest collection of trusted industrial brands and manufacturers.</h2>
+      <div class="divider"></div>
+    </div>
+  </section>
+
+  <section class="alpha-filter">
+    <div class="container">
+      <div class="alpha-list" id="alphaList"></div>
+    </div>
+  </section>
+
+  <section class="brands-tools">
+    <div class="container">
+      <div class="search-container">
+        <i class="fas fa-search" aria-hidden="true"></i>
+        <input type="text" class="search-input" id="searchInput" placeholder="Type to search..."
+          aria-label="Search brands" autocomplete="off">
+      </div>
+    </div>
+  </section>
+
+  <div class="results-info" id="resultsInfo" role="status" aria-live="polite"></div>
+
+  <section class="brands-section">
+    <div class="container">
+      <div class="brand-grid" id="brandGrid"></div>
+      <div class="no-results" id="noResults" style="display:none;">
+        <i class="fas fa-search" aria-hidden="true"></i>
+        No brands found matching your criteria.
+      </div>
+    </div>
+  </section>
+
+  <nav class="pagination-wrap" id="paginationWrap" aria-label="Brand pagination"></nav>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="./midwest-supplies-logo.png" alt="Midwest Supplies">
+          <p>Midwest Supplies LLC is a leading industrial materials and equipment supplier located in Illinois, USA,
+            specializing in innovative solutions for the energy and process industries.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href='./index.html'>Home</a></li>
+            <li><a href='./brands.html'>Our Brands</a></li>
+            <li><a href='./contact.html'>Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Get In Touch</h4>
+          <ul>
+            <li><a href="mailto:sales@mw-supplies.com">sales@mw-supplies.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Copyright &copy; 2026 Midwest Supplies LLC. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const brandData = {
+      "A": ["Aaronia Ag", "Allegro Microsystems", "APEM", "AAVID THERMALLOY", "Allen Bradley", "Apex", "Abax Industries", "Allen Bradley Guardmaster", "Applied Motion Systems", "ABB", "Alliance Memory", "Apricorn", "Abbatron", "Allied", "Aquarius", "ABB Jokab", "Allied Hygiene", "Araldite", "AB Connectors", "Alpha", "ARC GROUP", "Abeba", "Alpha Adhesives & Sealants Ltd", "Arcol", "Abeco", "Alpha Wire", "Arcolectric (Bulgin) Ltd", "Aber Socks", "Alps Alpine", "Arcol Ohmite", "ABI Electronics", "Alsico", "Arducam", "ABL Components", "Altech", "Arduino", "Able Systems", "Altecnic", "Argon 40", "ABL Sursum", "Altera", "Aries Electronics", "Abracon", "ALWAYSE", "Arima", "Aburnet", "Ambersil", "Armet", "ABUS", "Amblers", "Arnould", "ABUS Security-Center", "Ambro Sol", "Arrow", "Acc Silicones", "Ametek", "Artec", "Accuride", "AMETEK LAMB", "Artesyn", "ACE", "Amidon", "Artesyn / Advanced Energy", "Acim Jouanin", "Amphenol", "Artesyn Embedded Technologies", "ACOEM", "Amphenol Advanced Sensors", "ARTS", "Action Can", "Amphenol Aerospace", "ARX", "Active Gear", "Amphenol Air LB", "ASA", "ACT Meter", "Amphenol Canada", "Asahi Rubber", "Actuonix", "Amphenol Communications Solutions", "Aschua", "ADAFRUIT INDUSTRIES", "Amphenol FCI", "Assembly Technologies", "Adaltra", "Amphenol Fiber Optics", "Assemtech", "Adam Equipment Co Ltd", "Amphenol ICC", "ASSMANN WSW", "Adaptaflex", "Amphenol India", "Astec", "Adaptive", "Amphenol Industrial", "Astrodyne TDI", "Adder", "Amphenol Limited", "Asus", "Addgards", "Amphenol NEXUS Technologies", "AT Brown", "Adels Contact", "Amphenol PCD USA", "TC", "Adexa", "Amphenol Procom", "Atem", "Advance Tapes", "Amphenol RF", "Aten", "Advantech", "Amphenol Socapex", "Atlantic", "Aerotight", "Ampire", "Atlas Safety Shoes", "AE & T", "Amprobe", "Atmel", "AF", "ams OSRAM", "ATMI", "Agro", "AMS TREX", "ATP", "Aico", "AMT", "Atrato", "Aignep", "Analog Devices", "AUBOUEIX", "Aiko Denshi", "Anderson Power Products", "Audio-Technica", "AIMONT", "Ansell", "AUER Signal", "Aim-TTi", "Ansell Lighting", "AUO", "Air", "Ansmann", "Aurora Bearing Company", "AIRAM", "Antenova", "Austerlitz Electronic", "Airpax", "Antex", "Avago Technologies", "AKAZE", "Antex Electronics", "Avdel", "AKER", "Anybus", "Avery", "Alain Compas", "Aoip Instrumentation", "Avit", "Alfatronix", "Apache", "AVK", "Alfatronix Ltd", "APC", "Avro Pacific"],
+      "B": ["B3 Cable Solutions", "Berker", "Bopla", "Bachmann", "BERNIER CONNECT", "Bosch", "BACO", "Bernstein", "Bosch Rexroth", "Bahco", "Bernstein AG", "Bosch Rexroth Oil Control", "Bailey Electric & Electronics bv", "Bessey", "Bosch Sensortec", "Bakker Elkhuizen", "Betaduct", "Bose", "BALLUFF", "BG Electrical", "Boss", "Bals", "BIC", "Bossard", "Banner", "Bicap", "Bostik", "Bare Conductive", "Big Wipes", "Bott", "Bartec", "binder", "Bourdon", "BARTH", "BioBlocked", "Bourns", "Bas Components", "BirdBrain technologies", "Brad from Molex", "BASE", "Birtcher Products", "Brady", "BASF", "Bivar", "Brainboxes", "Basler", "BJB", "Brand-Rex", "Bata Industrials Europe", "BJ Enclosures", "Brannan", "Baudou", "BK Precision", "brennenstuhl", "Baumer", "Black & Decker", "Bresser", "BC Components", "Black n Red", "Bridgetek", "BCN3D", "Blackrock", "Bristol Uniforms Ltd", "Beagleboard.org", "Black Star", "Briton", "Beco", "Blake Envelopes", "Broadcom", "Bedea", "Blaklader", "Brodersen Controls", "Beeswift", "BlindBolt", "BROOKS", "Beghelli", "Böllhoff", "Brook Tavener", "BEHA", "Block", "Brother", "Beha-Amprobe", "BLS", "Broughton", "Beijer Electronics", "Blue Box Disposables GB Ltd", "Broyce Control", "Bekina", "Bluetti", "BS SYSTEMS", "Belden", "Bluetti Energy France", "BS Teasdale", "Bel Fuse", "Blu Mol", "BT", "Belimo", "BMI", "BTC Activewear", "Bellnix", "BNL", "Bticino", "BEL POWER SOLUTIONS INC", "Bodo Ehmann", "Bud", "Bel-Stewart", "Boehm", "Bulgin", "BENDER & WIRTH", "Bolle", "Bulldozer", "Bennett Safetywear", "Bolle Safety", "Burco", "Bergquist", "Bondhus", "Burkert", "Busch Jaeger - ABB", "Buschjost"],
+      "C": ["Cable Power", "Chemelex", "Contactum", "Cablofil International", "CHEMI-CON", "CONTELEC", "Cabloswiss", "Chemsplash", "Contitech", "Cactus", "Chemtronics", "Contrinex", "Caddock", "Cherry", "Contrinex from Molex", "CAHORS", "Chicopee", "Controlec", "CAL", "Chinfa", "Control Techniques", "Calex", "CHINT", "Convac", "CALTEST", "CHIPQUIK", "Cooper Tools", "CAMDENBOSS", "CH Products", "Coral", "Camfil", "CIF", "Cornell-Dubilier", "Camloc Gas Springs", "Cinch", "Corning", "CAMLOK", "Cinch Connectors", "Correge", "Camozzi", "Circuitmess d.o.o", "Corsair", "Campini Corel Spa", "Circuitworks", "Cosel", "Camtec", "Cirrus Logic", "Cosmo", "Canakit", "CISA", "COTEK", "Canon", "Cisco", "Cotswold Outdoor Ltd", "Capri", "Cistermiser", "Cottam", "CAP-XX", "CITIZEN FINEDEVICE", "Coupatan", "Carclo", "CK", "Coverguard", "Carel", "Cleanspace", "Coversafe", "Carlingswitch", "CLiC-iT", "Coversafe Clothing Ltd", "Carlo Gavazzi", "Cliff Electronics", "CP Electronics", "Carroll & Meynell", "Clifford & Snell", "Craig & Derricott", "CASANOVA", "Clydesdale Ltd", "Crameda Intersys", "Casella Cel", "CML Innovative Technologies", "Cranford Controls", "Casio", "CMP", "CRC", "Castle", "Coast", "CRC Kf", "Castrol", "COAX Connectors", "CREALITY", "CAT", "COBA", "Cree", "Caterpillar", "Coba Europe", "Cree LED", "Catu", "Cobrane", "Crescent", "Cecla", "Codelock", "Cressall", "Cederroth", "CODUPAL", "Crest Medical", "CEEP", "Cofra", "Crompton Controls", "CEJN", "Coil", "Cromwell Polythene", "Celduc", "Colder Products", "Cropico", "Cembre", "Columbus", "CROSBY", "Centronic", "COMAIR ROTRON", "Crouzet", "Centurion Safety", "Comark", "Crucial", "Cepovett Safety", "Comatec", "Crydom", "Ceratech", "Compact", "C-Safe", "Certex Bridon Lifting Systems", "Compact Instruments", "CSL", "CE-TEK", "CONEC", "CSM", "CEWE Instruments", "Conemount", "CTEK", "CGL", "Conex-Banninger", "CTi", "Channel", "Conex-It", "Curtis", "Chauvin Arnoux", "Connective Peripherals", "Custom Power Design", "Chauvin Arnoux Energy", "Contact Connectors", "Cutterwell & Co Ltd"],
+      "D": ["Dahréntråd", "Deutsch", "Dold", "Daikei Denshi", "DeWALT", "Dom Metalux", "Danfoss", "DFRobot", "Domnick Hunter", "Daniels Manufacturing", "Diadora Utility", "Don Connex", "Dataglo SQ", "Dialight", "Dorgard", "Datalogic", "Diamond", "Dormer", "Dataman", "Dickies", "Double Bubble", "Datwyler", "Dickson", "Dow Corning", "Davis & Moore", "DIFAC WORKMATE", "Draytek", "Davum-Tmc", "Digi International", "Drayton", "DBK Enclosures", "Digilent", "Dremel", "Deca", "Digisound", "Druck", "Decelect", "Digitron", "DSG-Canusa", "Deflecto", "Digitus", "Dätwyler Cables", "Dehn", "Dimplex", "Ducati Energia", "Delkin Devices", "Dino-Lite", "DuckieTown", "Dell", "DiodesZetex", "DUCK TAPE", "Delphi", "Diotec", "Dunlop", "Deltaco", "Di-Soric", "DuPont", "Delta Electronics", "Displaytech", "Durable", "Delta-Mobrey", "Display Visions", "Duracell", "Delta Plus", "Distrelec", "Duracell Procell", "Deltrol", "DKM", "Durakool", "Deltron", "D-Link", "Durbal", "Deltron Connectors", "DMC", "Durham", "Desco Europe", "DMC Co Ltd", "DWYER INSTRUMENTS", "DesignSpark", "DMD", "Dymo", "Deta", "Dockers by Gerli", "Dymo XTL", "Detectamet", "DOGA", "Dynex", "Dzus Fastener Europe"],
+      "E": ["e2s", "Elegoo", "ERKO", "EAD", "Elesa", "ERNI", "EA Elektro-Automatik", "Elesta", "Ersa", "Eagle", "Elga", "Eschenbach", "EAO", "Eliwell", "Espressif", "Easy Radio", "Eliza Tinsley", "Essailec", "Eaton", "Elka Gb", "Esselte", "Eaton Bussmann Series", "Elma", "Essentra", "Eaton HAC", "Elmer's", "ETA", "EBE Group", "ELTE-TEC", "Eberle", "Elten GmbH", "ETI", "ebm-papst", "EMCT", "Etic", "Eccel Technology Ltd", "EMERGI-LITE", "Euroind", "Eclipse", "Emerson Appleton", "Euro-Locks a Lowe & Fletcher group Company", "Ecliptek", "EMERSON ? ASCO", "Europa", "EcoFlow", "EMERSON ? AVENTICS", "European Thermodynamics", "Ecolink", "Emko", "Europower Controls", "Ecospill Ltd", "EMU Electronic AG", "Euroquartz", "EcoTech", "Encitech Connectors", "EUROSTAT", "ECS Inc International", "Endress+Hauser", "Eurotherm", "EDAC", "Eneloop", "EVENTUS", "EDC PROTECTION", "Energizer", "Eveready", "Edding", "Enerpac", "Everlight", "Edimax", "Enersys", "Evoluent", "Edsyn", "Engel", "Evo-Stik", "E+E Elektronik", "Engel Workwear", "Ewbank", "Efento", "English Abrasives", "Ewellix Makers in Motion", "Efergy", "ENIX Energies", "Ewon", "Ega-Master", "EnOcean", "Exacompta", "EGO", "ENTES", "EXACT", "EICHOFF", "Entrelec", "Exalium", "ELC", "EOS", "Exascend", "Elditest", "EOZ", "Excelsys / Advanced Energy", "eldoLED", "EPCOS", "Exidor", "Elecfreaks", "EPIC", "Expert by Facom", "Electrak", "EPIGAP OSA Photonics", "Explorer Cases", "Electro Group", "Eplax", "Exsys", "Electrolube", "EPOS", "Extech", "Electromen OY", "Epson", "EYC", "Electronic Assembly", "ept GmbH", "Ezecal", "Electro PJP", "Erem", "Eze Lap", "Electro Terminal", "ERG", "EZ Hook", "Electrotherm", "Ergodyne", "Ezurio", "Ezyclamp"],
+      "F": ["Fabreeka", "Figaro", "Fluke", "Facom", "FIMM", "Fluke calibration", "FAG", "Finder", "Fluke Networks", "Fagor Electronica", "FireAngel Safety Technology Limited", "Fluro", "Fairchild Semiconductor", "Fireblitz", "F Lutze Ltd", "Fair-Rite", "FireHawk Safety Products", "Fordata", "Fandis", "First Alert", "FORN. OCC. ITA.", "Fastech", "Fischer Elektronik", "Fortex", "Faulhaber", "Fischer Fixings", "Fox Electronics", "FCT", "FIT-Foxconn", "Freudenberg Sealing Technologies Simrit", "FCT from Molex", "Fivilevel", "Frigerio Ettore", "FEIN", "Fivistop", "Fristads", "Felder Lottechnik", "Flamsafe", "Friwo", "Feller", "Flex", "FROGTAPE", "Fellowes", "Flexa", "FSI", "Felo", "Flexello", "FTDI Chip", "Fenner Drives", "Flexicon", "FTI", "FERROXCUBE", "Flexitog", "Fuchs", "Festo", "FlexLink", "Fujikura", "Fiamm", "Flexovit", "Fujitsu", "FIBET", "Flightlink Controls", "FUJIYA", "Fibox", "FLIR", "Fulleon", "Fieldbook", "Flowline", "FUSS-EMV"],
+      "G": ["Gai-Tronics", "Geocel", "Gossen Metrawatt", "Ganter", "geo-FENNEL", "Gp Batteries", "Gard Plasticases", "Georg Fischer", "Grasslin", "Garmin", "GEORGIN", "Grayhill", "GAS SENSING SOLUTIONS LTD", "Gerber", "GreenBrook", "Gaston Mille", "Getac", "Green Clean", "Gates", "GIC", "Greenlee", "GBC", "GILGEN Muller & Weigert", "Greenwich Instruments", "GCE", "G&J Hall", "Greenwood", "GCS Thermal", "GlassGuard", "Grinn", "GearWrench", "Glenair", "Gripit", "Geckodrive", "Global Component Sourcing", "Gripple", "Gedore", "Global Laser", "GT Line", "Gefran", "GMC-I Prosys", "GUDE", "Gemini", "Goldfreeze", "GUIDE GLOVES", "Gems", "Goliath", "Guitel Hervieu", "Gems Sensors", "Goobay", "Gustav Klauke", "Gennum", "Goodfellow", "GUYARD", "Genteq", "GORILLA GLUE EUROPE LTD", "Guyson", "Gentex", "Gossen Foto", "GVS"],
+      "H": ["Habia", "Heico", "HIROSUGI", "Hackboard", "HellermannTyton", "Hirschmann", "Hager", "HellermannTyton Connectivity", "Hirschmann Test & Measurement", "Hahn", "Helly Hansen", "Hirst Magnetics", "Hairtite", "Helmholz GmbH & Co. KG", "Hitachi", "HAIX", "Helukabel", "HI-TORQUE", "Halder", "Hengstler", "HOBUT", "Halo Electronics", "HENSEL", "Holo-Krome", "Halyard", "HepcoMotion", "Holtek", "Hama", "Heraeus", "Honeywell", "Hamamatsu Photonics", "Herga", "Honeywell Safety", "Hameg", "Herock", "Hongfa Europe GMBH", "Hammerite", "Hew Heinz Eilentropp", "HopeRF", "Hammond", "Hewlett Packard", "Hosiden Besson", "Hank", "Hexarmor", "Hosonic", "Hanmere Polythene", "Heyco", "Hostess", "Hanna Instruments", "HF", "Hoyles", "Hard Yakka", "Hi-Bond", "Hsuan Mao", "Harrison Wipes", "Hi-Force", "Hubbell", "HARTING", "HI-GRIP", "Huber+Suhner", "Hartmann", "Hill Brush", "Huco", "HARWIN", "Hilscher", "Hughes", "Hauber Elektronik", "Himalayan", "Hugo Brennenstuhl", "Hawke", "Hinode Electric Co Ltd", "Hummel", "HAZET", "Hios", "Hutchinson", "Heat-Sink&Os", "Hiquel", "Hutchinson Le Joint Français", "Heckel", "Hirose", "HydraForce"],
+      "I": ["i-Autoc", "IK Sprayers", "International Applications Ltd", "Ibico", "ILS", "International Rectifier", "Icel", "iMaXX", "Interquip", "IC Haus", "Impacto", "Interroll", "Icotek", "IMS", "Intersil", "ICP-DAS", "INA", "Intesis", "ICP DAS USA", "INBUS", "InvenSense", "ICY BOX", "Industrial Shields", "INVENSYS CLIMATE CONTROLS", "Ideal", "Infapower", "Inventronics", "Ideal Industries", "Infineon", "IQD", "Ideal Power", "Inktek", "IQRF", "ideal-tek", "InnoDisk", "IRIMO", "Idec", "Innomaker", "Irwin", "IDEM", "Insight SIP", "Isabellenhutte", "Idento", "Inspire Protection", "Isocom", "ID Group", "Instruments Direct", "ISSI", "I.E.E.", "INSYS icom", "IST INNOVATIVE SENSOR TECHNOLOGY", "IET", "Integral Memory", "iStorage", "ifm electronic", "Integral Thermal Shield", "Italtronic", "Igenix", "Intel", "ITL Insulated Tools Ltd", "Igus", "Intelligent Display Solutions", "ITT Cannon", "iiyama", "Intelligent Horticultural Solutions", "ITW Devcon", "IKALOGIC", "Intelligent LED Solutions", "ITW Switches", "IKON", "Intelligent Memory", "Ixxat", "IKO Nippon Thompson", "Interface Connectors", "IXYS"],
+      "J": ["Jabra", "JCS Hi-Torque", "Johnson Electric", "Jack Sealey", "Jelt", "Jokari", "Jacobs", "JG Speedfit", "Jorjin", "JAE", "JKL Components", "JPL", "Jaeger", "JLF Pro", "JRC", "Jalas", "JLP", "JSP", "Jallatte", "JM CONCEPT", "JST", "Jay Electronique", "Jo-El Electrical", "Jubilee", "JCB", "John Drummond", "Jumo", "JCS", "John Guest", "Junkosha Inc."],
+      "K": ["Kaba", "Key Instruments", "KNITTER-SWITCH", "Kabeltronik", "Keystone", "KOAKACK", "Kimberly Clark", "Kodak", "Kahnetics", "KIMO", "Kolmi Hopen", "Kane", "KIMTECH", "Kontakt Chemie", "Karcher", "Kingbright", "Kopex", "KARIBAN", "Kingstate", "Kopex-EX", "KA Schmersal", "Kingston", "Kopp", "Kasp", "KIOXIA", "Kora", "Katrin", "KIP", "Korg Nutube", "Kbins", "KITAGAWA INDUSTRIES", "KRATOS SAFETY", "Kee Lite", "Kitronik", "Kraus & Naimer", "Keenserts", "Kittenbot", "Krino", "Keithley", "KKSB", "Krone", "KEL Corporation", "KLASS", "KTR", "KEMET", "Klauke", "Kubler", "Kensington", "Klaxon", "Kuhnke", "Kenwood", "Klüber", "Kurth Electronic", "Kern", "KLEENEX", "Kustom Kit", "Kert", "Kleffmann & Weese", "KUTLASS", "Kestrel", "Klein Tools", "Kvaser", "Kewtech", "Klinger", "Kycon", "Kewtech Corporation", "Knightsbridge", "KYOCERA AVX", "Keyestudio", "Knipex", "KYORENE", "Kyoritsu"],
+      "L": ["LAG", "LEDVANCE", "Linear Tools", "Laiier", "Legamaster", "Linpac Storage Systems", "Laird", "Legge", "Linx", "Laird Connectivity", "Legrand", "Liscombe", "Laird External Antennas", "Legrand Cable Management", "Lite-On", "Landport Batteries", "Legris", "Littelfuse", "Landzo", "Leica", "LK", "Lantronix", "Leitz", "LKM electronic", "Lapis", "LEM", "L & M Young", "Lapp", "LEMAITRE SECURITE", "Loctite", "Lascar", "LEMO", "Logitech", "Laserliner", "LENOVO", "Lorlin", "Laser Vision", "Lenox", "Louis Tellier", "Lattice Semiconductor", "Lenze", "Lovato", "Lawson Fuses", "Leoni Kerpen", "LPRS", "Lawtronics", "Leo Workwear", "LS Starrett", "LCJ Capteurs", "Leuze", "Lubetech", "L-Com", "Lexar", "Lufkin", "LDK", "LG", "Lumberg", "LDRobot", "Licefa", "Lumberg Automation", "Leatherman", "LIFOS", "Lumel", "Lebon Protection", "Limitor", "Lumex", "LED2WORK", "Lincoln Technology Solutions", "Lumileds", "Ledil", "Lindstrom", "Lumotech", "LEDLENSER", "Lindy Electronics", "Luna Optoelectronics", "Ledtech", "Linear Technology", "Lutronic", "Luxo", "Lyric Shin Electonic"],
+      "M": ["M5Stack", "Meech", "Mini Motor", "Mac 8", "Megger", "MiniTec", "Macronix", "Melexis", "Minwa", "Maglite", "Mellor Electric", "Mitsubishi Electric", "MAGNUM", "Menda", "MITSUBISHI GAS CHEMICAL NEXT", "Makey Makey", "MENNEKES", "MITSUBISHI MATERIALS", "Makita", "MENNEKES Stecker", "Mitutoyo", "Malico", "Mentor", "Mityvac", "Manorga", "Mentor GmbH", "MK Electric", "Manson", "MERCURY", "MMD", "Manulatex", "Merlett Plastics", "Mobilemark", "Mapa", "Mersen", "Moflash", "Mapa Spontex", "Messagemaker Displays", "Moldex", "Marl", "Metcal", "Molex", "Marquardt", "METCASE", "Molex CES", "Martec", "Meterman", "MOLINEL", "Martindale", "Meticomm", "Monitran", "MARTOR", "Metrix", "Monk Makes", "Marushin", "Metrohm", "Monolithic Power Systems (MPS)", "Masach Tech", "Metsa", "Moons", "Mascot", "Metz-Connect", "Moore & Wright", "Mascot Workwear", "MG Chemicals", "Morningstar", "Master Lock", "MH Connectors", "Moteck Electric Corp", "Master Mite", "MHH Engineering", "Motorola", "Masterplug", "MicroBit", "Motovario", "MATATALAB CO., LTD.", "Microchip", "Motrona", "Matrix International", "Micro Crystal", "MOXA", "Matrox", "Microgard", "MPS", "Matt:e", "Micro Light", "MSA Safety", "Maxa Technologies", "Micro-Measurements", "MTC", "Maxim Integrated", "Micro Motors", "MTI", "MaxLinear", "Micron", "MtronPTI", "Maxon", "Micronel", "Muck Boot", "Mayku", "Micronics", "Mueller", "MBO", "Microsoft", "Mueller Electric", "McLennan Servo Supplies", "Microsonic", "Mukua", "MEAN WELL", "microSYST", "Muller", "MEC", "MicroTouch", "Mullion", "Mecalectro", "MICROWIRES", "Multicore", "MECATRACTION", "Midas", "Multimedia Connect", "Mechetronics", "MIKALOR", "Multi-Torque", "Mecmesin", "MikroElektronika", "Murata", "Meder", "MikronTec", "Murata Power Solutions", "Medicom", "Miller", "Murrelektronik Limited", "Mykal Industries", "Myrra"],
+      "N": ["Nabic Valve Safety Products", "Nexperia", "Norbar Torque Tools", "NANOVIA", "NF", "Norcomp", "Nanuk", "NIC Components", "Nordic Semiconductor", "Nanuk EU b.v.", "Nichia", "Norgren", "Nardi", "Nichicon", "Northwood Hygiene", "National Semiconductor", "Nichifu", "Norton", "NDK", "NIDEC ADVANCED MOTOR", "Notrax", "Nebo", "Nidec Components", "Nova", "Nedis", "Niebuhr", "Novotech Controls", "Nelco", "Nightsearcher", "Novotechnik", "NEMIQ", "Nilfisk", "NSF", "NeoCortec", "Nine worths", "NSK", "NEOFEU", "Nipron", "NSK-RHP", "Netac", "Niroflex", "NTN", "NetAlly", "Niryo", "N-Tron", "Netgear", "NISSEI", "Numatic", "Netool.io", "Nisshinbo Micro Devices", "Nu-Tech Engineering", "Netpeppers", "Nito", "Nuvotem Talema", "Netsushin", "NITRAS SAFETY", "NVENEUTRAL", "NKK Switches", "nVent CADDY", "Neutrik", "NMB", "nVent ERICO", "Never Let Go", "Nobo", "nVent ERIFLEX", "NEWHAVEN DISPLAY INTERNATIONAL", "No Climb", "nVent HOFFMAN", "NewLink", "Noga", "nVent SCHROFF", "Nexans", "Noratel", "NWS", "NXP"],
+      "O": ["OB1", "Omron", "Orthosole", "Observer Tools", "OnRobot", "Osada", "Oceansmile", "onsemi", "OSA Electronics", "OEM", "OPKON", "OSA Opto", "OEP", "Optek", "Oscium MetaGeek", "Oetiker", "OPTIOS", "OSI Optoelectronics", "Ohaus", "OPTIBELT", "Osram", "Ohaus Europe GmbH", "Optoma", "Osram 1", "Ohbot", "Optrel", "OSRAM Opto Semiconductors", "Ohmite", "Optris", "OStream", "OilSafe", "Orbit", "Otto", "Okaya Electric Industries", "Orbitec", "Ouneva", "Okdo", "Orbit International", "OUTILLAGE MAGAFOR", "OKdo x Radxa", "Oriental Motor", "Outils Oceans", "OKW", "Orium", "Overview", "OKW Enclosures", "Orn", "Oxley"],
+      "P": ["Pace", "Philips Technologies", "Power Integrations", "Pactec", "Phoenix Contact", "PowerLED", "Pair & Pair", "Phonic", "Power-One", "PAL", "Photocentric", "Powerprove", "Panasonic", "Picard", "Power Sonic", "Panavise", "Pico Technology", "Powertip", "Panduit", "Piher-Amphenol", "Power Twist Plus", "Paper Mate", "PIHER SENSORS AND CONTROLS S.S.", "APP Safety", "Paperwear", "Pilz", "Pramet", "Parade", "Pimoroni", "Praybourne", "Parallax Inc", "Pinet", "Preci-Dip", "Parker", "PIP", "Precimation AG", "Parker Origa", "Pi Supply", "Precision Brand", "Parker UCC", "PITTMAN AMETEK TIP", "PR Electronics", "Partex Marking Systems", "PIXSYS", "PREMINES", "PASS & SEYMOUR", "Planet", "Pressmaster", "Patlite", "Planet-Wattohm", "PREVOST", "Paulstra Hutchinson", "Planorga", "Pro Car", "Payperwear", "Plantronics", "Pro-face", "PB SWISS TOOLS", "Plastic Systems", "Pro Fit", "PCL", "PLASTOREG", "ProGARM", "PCN", "Plica", "ProMinent", "PDT", "Plustek", "Prosensor", "Peak", "PMA", "Proshield", "Peak Electronic Design", "PMA Uster", "Prosiflex", "PeakTech", "Polamco", "Proskit", "Pegler Yorkshire", "Polaroid", "Protecta", "Peli", "Pollyboot", "Proteus Equipment", "PenCarrie Limited", "Polyco Healthline", "Protimeter", "Penko", "Polyhex", "Proton", "Penta", "Polymaker", "Provertha", "Pepperl + Fuchs", "Polymer Optics", "Prowave", "Peppers", "Polyplumb", "Prysmian", "Perancea", "Pomona", "PTR HARTMANN", "Petrel", "POPP", "UI Audio", "Petzl", "Pop Rivets", "Pukka", "PFAFF", "Portasol", "Pukka Pads", "Pfannenberg", "Portescap", "PULS", "PFERD Rüggeberg France", "Portwest", "PULSAR", "Phaesun", "Post-It", "Puma Safety", "Phihong", "Power Adhesives", "Purex", "Philips", "Powerbreaker", "PV Logic", "Philips Lighting", "PowerConnections", "Pyramex", "Pyro Controle"],
+      "Q": ["QANTEK", "Qoitech", "Quadrant Connectors", "Qnity Laird", "QT Quarztechnik", "Quasar", "Quectel"],
+      "R": ["Raaco", "Reldeen", "ROCA", "Radiall", "Releco", "Rockfall", "Radiodetection", "Reliance Water Controls", "Rockwell Automation", "Radiohm", "Relpol", "Rocol", "Radium", "Rema", "Rodo", "Radxa", "Renesas Electronics", "Rohde & Schwarz", "RAFI", "Rennsteig", "ROHM", "Ragni", "Renold", "ROLEC", "Raise3D", "Reolink", "Roline", "Ralawise", "Resatec", "Ront Production", "RALTRON", "RESPIREX", "Roots", "Rapesco", "Revolution PI", "Rose", "Rapid", "Revvo", "Rose+Krieger", "Rapid Agrafage", "Rexel", "Rosemount", "Raspberry Pi", "Rexnord", "Rosenberger", "RawlPlug", "Rextron", "Rostaing", "Raystar", "RF Solutions", "Rotabroach", "Raytech", "Rhopoint", "Roth+Co", "Raytek", "Richco", "Rotring", "RealSense", "Riello", "Rotronic", "Re-An Products", "Riley", "Rotronic Instruments", "Reckmann", "Ringfeder", "Rottner Comsafe", "Recoil", "Ritel", "Roxburgh EMC", "Recom", "Rittal", "Roxtec", "Record", "Riverdi", "Royce Thompson Electric", "Red Lion", "RND", "RS PRO", "Red Pitaya", "Robert Scott", "Rubberex", "Redring", "Robin", "Rubbermaid Commercial Products", "Reebok Work", "Robotiq", "Rubycon", "Reflex Packaging", "Robusta Scientific Footwear", "Ruland", "Regatta Professional", "Robustel", "Runleader"],
+      "S": ["S.24", "Sferaco", "Sparkfun", "S2C", "EB", "Sgos", "Spear & Jackson", "S.A Bourqui Jean", "SG Wireless", "Specsafe", "Safety First Aid Group", "SGX Sensors", "Spectrum Industrial", "Saft", "Sharp", "Spelsberg", "Saia-Burgess", "Sharpie", "Sphero", "Saint-Gobain", "Shesto", "Spirax Sarco", "Saint-Gobain Industrial & Consumer Solutions", "Shining 3D", "Spontex", "Sakae Tsushin Kogyo", "SHINKO", "SpotSee", "SAM", "Shoes for Crews", "SPREADFAST", "Same Sky", "SHOT", "Sprint Electric", "Samsung", "Showa", "Squire", "Samsung Electro-Mechanics", "SIB", "S+S Regeltechnik GmbH", "Sander", "SIBA", "St Sensing Limited", "Sandisk", "SICK", "Stabila", "SANTON", "Sidamo", "Stabilo Boss", "Sanwa Electric Instruments", "Siemens", "Stadium IGT", "Sanyo Denki", "Sierra Wireless", "Stadium Power", "Sanyo Video Vertrieb", "SIE Sensorick", "Stag Programmers", "Sasco", "SIEVERT", "STAHLWILLE", "Sato Parts", "Sifam", "Stampiton", "SAUERMANN.", "Sifam Instruments", "Standex-Meder", "Saul D", "Sifam Tinsley", "Stanley", "Sauter", "Siga", "Stanley Electric", "SAUTER REGULATION", "Sigma Products", "Stanley FatMax", "Savigny", "Signal Construct", "Stanley Proto", "SB COMPONENTS LTD", "Signet", "Stanley Tools", "ScaffTag", "Signs & Labels", "Stannol", "Scame", "Silergy", "Stara Safety", "SCHAEFFLER", "Silfox", "Starmix", "Schaffner", "Silicon Labs", "Starpower", "Schill", "Silicon Power", "Star Progetti", "Schlegel Elektrokontakt", "Simex", "Starrett", "Schmersal", "SINGER SAFETY", "Startech", "Schneider Electric", "Sioen", "StarTech.com", "Schnippering", "Sioen Uk", "Staubli", "Schoeller Allibert", "SIP", "Staubli ? Fluid Connectors", "Schurter", "SIP Protection", "Stauff", "Schutzinger", "Sirai", "Steadfast", "Scintacor", "Siretta", "Steca", "ScioSense", "Sitbrush", "STEERMAN", "SCJ Professional", "Sixton", "Steffen", "SCOTT", "Skechers", "STEGO", "SCRUBS®", "SKELLERUP", "Steinbach & Vollman", "Scruffs", "Skellerup Footwear Europe", "Steinel", "SCS", "SKF", "STELLA O.M. DI MASSIMILIANO STELLA", "SDRplay", "Skipper", "Stelvio Kontek", "SDT Ultrasound Solutions", "Skopes", "Sterling Power", "Seagate", "SKROSS", "Sterling Safety Wear", "Seasonic", "Skytec", "Steute", "Seaward", "Skytec Elements", "Stewart Connectors", "Seaward Clare", "Skyworks Solutions Inc", "Stieber", "Securak", "iSlice", "STMicroelectronics", "Securikey", "S Lilley & Son", "Stontronics", "Sedis", "Sloan", "Storacell", "Seeed Studio", "SL Power / Advanced Energy", "Storm", "Seeit", "Smarteq Wireless", "Strident", "SEEREP", "Smartora", "Strong Hold", "Sefram", "Smartscan", "Stuart", "SEGGER", "SMC", "Suco", "Seifert", "Snickers", "Sundstrom", "Seiko Instruments", "SNOC", "Sunhayato", "Selden", "SNR", "Sunnex", "Seluxit A/S", "Socket & See", "Sunnex Equipment AB", "Semelab", "Socomec", "Sunon", "Semikron", "SOFAME", "Super Rod", "Semikron Danfoss", "Sola", "Supertouch", "SEMITEC", "SolaHD", "Super Wick", "Semtech", "Solar Centre", "Sura Magnets", "Seneca", "Solar Technology", "Sure24", "Senju Metal Industry", "Solartron Metrology", "Suregrip", "Sensata / Crydom", "Solentec Limited", "SURFLEX", "Sensirion", "Soler&Palau", "Susumu Co", "Sentinel", "Solidur", "Swann-Morton", "Seoul Semiconductor", "Sollatek", "Swarfega", "Seoul Viosys", "Sonitron", "Switchcraft", "Serious", "Sonnenschein", "Syfer Technology", "Serpac", "Sontara", "Sylvania", "Servogor", "Sony", "Synaptics® Astra Machina", "SES", "Souriau Sunbank by Eaton", "Sync Energy", "SES Sterling", "Southco", "SYRLINKS", "Setra", "Soway", "System Plast"],
+      "T": ["System Zero", "T2S", "Tempo", "Topdog", "Tadiran", "Tempo Kingfisher", "Toprax", "Taica", "Teng Tools", "Topspec Euro", "Taiwan Semiconductor", "Tenneco", "Tork", "Taiyo Yuden", "Tensator", "Tornado", "Tajima", "Tente", "TOSACA", "Tajima Electronics", "TERA Sensor", "Toshiba", "Tajimi Electronics", "Terasic", "Tosi", "Takachi Electric Industrial", "Teroson", "TOTM LIMITED", "Tamtorque", "Terry", "Toughbuilt Industries", "Tamura", "Tesa", "Toughcon", "TANCAP TECHNOLOGY", "Testec", "Tower", "Taoglas", "Testo", "Toyogiken", "TAP France", "Texas Instruments", "TP-Link", "Tark Thermal Solutions", "TGlobal", "TRACOPOWER", "Tasker", "Thaw", "Tractel", "Tavismanor", "Theale", "TradeTuff", "TBS de Buck B.V", "Theben", "Traffi", "TB Wood's", "The Best Solution TBS", "Tranemo", "TCI", "The Cheeky Panda Ltd", "Transair", "TDE Instruments", "The Dexter Corporation", "Transcend", "TDK", "Thermaltronics", "Trelleborg", "TDK-Lambda", "Thermo Electric Devices", "Trendnet", "TDS", "The Safety Knife Company", "TREND Networks", "TDSi", "The Safety Supply Company", "Trenz Electronic GmbH", "TEC Glue Guns", "The Things Industries", "Treston", "Technics", "THK", "T-REX", "Techno", "Thomas & Betts", "TR Fastenings", "Techspray", "Thomson Linear", "TRICOFLEX", "TecMate", "Thorlux Lighting", "Trident Engineering", "TEC Motors", "Tilsatec", "Trinamic", "TE Connectivity", "Timberland", "Tripus", "TECO Westinghouse", "Time Electronics", "TRUE", "Tedea Huntleigh", "Timeguard", "Trumeter", "TEEP", "TRAKT", "Times Microwave", "TSG", "Tegera", "Timken", "TSLC", "Teishin Electric", "Titan", "TT Electronics/BI", "Teko", "Tivoly", "TUBESCA", "Tektronix", "TM Electronics", "Tufnol", "Tele", "TOA", "Tufvassons Transformator", "Teledyne", "Tohkai Sangyo", "TUK Limited", "Teledyne LeCroy", "Tokin", "Turbotech", "Telegartner", "Toko", "Turck", "Telemecanique Sensors", "TOLLOCK", "TXC", "Telit", "Tom Carrington & Son", "TYC", "Teltonika", "TomTom", "Tychem", "Tempatron", "Tools Of Trade", "Tyvek"],
+      "U": ["UAB TELTONIKA NETWORKS", "Unibond", "UNI-T", "UCC", "Unicoil", "United Automation", "Ultimaker", "Unifive", "Univet", "ULTI-MATE", "UNIFIX VORTEX", "Univision", "Ultimate Industrial", "Uniform World Limited", "UNKNOWN", "Ultra Electronics", "Uniglove", "UPower", "Ultralife", "Unigloves", "Usag", "Uneek", "Unilite", "Useful Sensors Inc.", "Unex", "Union", "UTZ", "Unger", "Unipower", "UVGERMI", "Unibank", "Unistrut", "UVOX"],
+      "V": [],
+      "W": ["Wachendorff", "Weller Xcelite", "Wiper Supply Services Ltd", "WAGO", "Welwyn", "Wippermann", "Waka Manufacturing", "Wenger", "Wiremold", "Waldmann", "Wera", "WISKA", "Walsin Technology Corporation", "Werma", "WIS Portenta", "WARNER ELECTRIC EUROPE", "Westermo Data Communications", "Wiss", "WASP", "Western Digital", "Witra", "Watson Smith", "West Instruments", "WIZnet Inc", "Watts", "Whitecroft Essentials", "WJ Furse", "WD-40", "Wickmann", "Wl Gore & Associates", "WECO", "Wieland", "Wolf Safety", "WECON", "Wiha", "Wolfspeed", "WeEn Semiconductors Co., Ltd", "WIKA", "Wolk", "WEG", "William Whiteley & Sons", "Wonder Grip", "Weidmüller", "Wilo UK LTD", "W Robinson And Sons", "Welding Star", "WIMA", "Wurth Elektronik", "Weller", "Winbond", "WYPALL", "Weller Erem", "Winslow", "Wyse Technology"],
+      "X": ["Xcelite", "Xpelair", "Xylem", "XinaBox", "XP Power", "Xylem Flojet", "XMOS", "Xsens", "Xylem Jabsco", "Xylem Lowara", "Xytronic"],
+      "Y": ["Yageo", "Yale1", "YATOO", "Yahata Neji", "Yamaichi", "Yealink", "Yaktax", "Yansport", "Yoshida Electric Industry", "YALE", "Yansport Safetywear Ltd", "Yuasa", "Yuetsu"],
+      "Z": ["ZANDER AACHEN", "Zenith Hygiene", "Zippy", "Zarges", "Zep", "Zortrax", "ZDAUTO", "ZF", "ZTS", "Zebra", "Zilog", "ZYMBIT"],
+      "0-9": ["2001 Technology", "3-EN-UN", "3M PELTOR", "2J Antenna", "3M", "4D Systems", "3DGBIRE", "3M E.A.R", "4lite UK", "52Pi"]
+    };
+
+    const brands = [];
+    Object.keys(brandData).forEach(letter => {
+      brandData[letter].forEach(name => {
+        brands.push({ name, letter });
+      });
+    });
+
+    const ITEMS_PER_PAGE = 40;
+    const brandGrid = document.getElementById('brandGrid');
+    const noResults = document.getElementById('noResults');
+    const searchInput = document.getElementById('searchInput');
+    const alphaList = document.getElementById('alphaList');
+    const paginationWrap = document.getElementById('paginationWrap');
+    const resultsInfo = document.getElementById('resultsInfo');
+
+    let searchQuery = '';
+    let activeLetter = 'ALL';
+    let currentPage = 1;
+
+    const allLetters = [...new Set(brands.map(b => b.letter))].sort();
+
+    function renderAlphaFilter() {
+      alphaList.innerHTML = '';
+      const allBtn = document.createElement('button');
+      allBtn.type = 'button';
+      allBtn.textContent = 'ALL';
+      if (activeLetter === 'ALL') allBtn.classList.add('active');
+      allBtn.addEventListener('click', () => { activeLetter = 'ALL'; currentPage = 1; renderAlphaFilter(); renderBrands(); });
+      alphaList.appendChild(allBtn);
+
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(letter => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.textContent = letter;
+        if (!allLetters.includes(letter)) { btn.classList.add('disabled'); btn.disabled = true; }
+        if (activeLetter === letter) btn.classList.add('active');
+        btn.addEventListener('click', () => {
+          if (btn.disabled) return;
+          activeLetter = letter; currentPage = 1; renderAlphaFilter(); renderBrands();
+        });
+        alphaList.appendChild(btn);
+      });
+
+      const numBtn = document.createElement('button');
+      numBtn.type = 'button';
+      numBtn.textContent = '0-9';
+      if (activeLetter === '0-9') numBtn.classList.add('active');
+      if (!allLetters.includes('0-9')) { numBtn.classList.add('disabled'); numBtn.disabled = true; }
+      numBtn.addEventListener('click', () => {
+        if (numBtn.disabled) return;
+        activeLetter = '0-9'; currentPage = 1; renderAlphaFilter(); renderBrands();
+      });
+      alphaList.appendChild(numBtn);
+    }
+
+    function getFilteredItems() {
+      const q = searchQuery.trim().toLowerCase();
+      return brands.filter(b => {
+        if (activeLetter !== 'ALL' && b.letter !== activeLetter) return false;
+        if (q) return b.name.toLowerCase().includes(q);
+        return true;
+      });
+    }
+
+    function renderPagination(totalItems, totalPages) {
+      paginationWrap.innerHTML = '';
+      if (totalPages <= 1) return;
+
+      const createBtn = (label, page, isActive, isDisabled, ariaLabel) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.innerHTML = label;
+        btn.disabled = isDisabled;
+        if (ariaLabel) btn.setAttribute('aria-label', ariaLabel);
+        if (isActive) { btn.classList.add('active'); btn.setAttribute('aria-current', 'page'); }
+        if (!isDisabled && !isActive) {
+          btn.addEventListener('click', () => {
+            currentPage = page; renderBrands();
+            document.querySelector('.brands-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+        }
+        return btn;
+      };
+
+      paginationWrap.appendChild(createBtn('<i class="fas fa-chevron-left"></i> Prev', currentPage - 1, false, currentPage === 1, 'Previous page'));
+
+      const getPageNumbers = () => {
+        const delta = 1; const range = []; const rangeWithDots = [];
+        for (let i = 1; i <= totalPages; i++) {
+          if (i === 1 || i === totalPages || (i >= currentPage - delta && i <= currentPage + delta)) range.push(i);
+        }
+        let l;
+        for (let i of range) {
+          if (l) {
+            if (i - l === 2) rangeWithDots.push(l + 1);
+            else if (i - l !== 1) rangeWithDots.push('...');
+          }
+          rangeWithDots.push(i); l = i;
+        }
+        return rangeWithDots;
+      };
+
+      getPageNumbers().forEach(item => {
+        if (item === '...') {
+          const span = document.createElement('span');
+          span.className = 'ellipsis'; span.textContent = '…'; paginationWrap.appendChild(span);
+        } else {
+          paginationWrap.appendChild(createBtn(item, item, item === currentPage, false, `Page ${item}`));
+        }
+      });
+
+      paginationWrap.appendChild(createBtn('Next <i class="fas fa-chevron-right"></i>', currentPage + 1, false, currentPage === totalPages, 'Next page'));
+    }
+
+    function renderBrands() {
+      const filtered = getFilteredItems();
+      const total = filtered.length;
+      const totalPages = Math.ceil(total / ITEMS_PER_PAGE) || 1;
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+
+      const start = (currentPage - 1) * ITEMS_PER_PAGE;
+      const end = start + ITEMS_PER_PAGE;
+      const pageItems = filtered.slice(start, end);
+
+      if (total === 0) {
+        resultsInfo.innerHTML = '';
+      } else {
+        resultsInfo.innerHTML = `Showing <span>${start + 1}–${Math.min(end, total)}</span> of <span>${total}</span> brands`;
+      }
+
+      brandGrid.innerHTML = '';
+
+      if (total === 0) {
+        noResults.style.display = 'block';
+        paginationWrap.innerHTML = '';
+        return;
+      }
+      noResults.style.display = 'none';
+
+      const grouped = {};
+      pageItems.forEach(b => {
+        if (!grouped[b.letter]) grouped[b.letter] = [];
+        grouped[b.letter].push(b.name);
+      });
+
+      Object.keys(grouped).sort((a, b) => {
+        if (a === '0-9') return 1;
+        if (b === '0-9') return -1;
+        return a.localeCompare(b);
+      }).forEach(letter => {
+        const heading = document.createElement('div');
+        heading.className = 'letter-heading';
+        heading.textContent = letter === '0-9' ? '0-9' : letter;
+        brandGrid.appendChild(heading);
+
+        grouped[letter].sort((a, b) => a.localeCompare(b)).forEach(name => {
+          const card = document.createElement('a');
+          card.className = 'brand-card';
+          card.href = './contact.html';
+          card.innerHTML = `<span class="brand-name">${name}</span><i class="fas fa-arrow-right brand-arrow"></i>`;
+          brandGrid.appendChild(card);
+        });
+      });
+
+      renderPagination(total, totalPages);
+    }
+
+    searchInput.addEventListener('input', e => {
+      searchQuery = e.target.value; currentPage = 1; renderBrands();
+    });
+
+    renderAlphaFilter();
+    renderBrands();
+
+    (function () {
+      const toggle = document.getElementById('navToggle');
+      const nav = document.getElementById('navPrimary');
+      if (!toggle || !nav) return;
+      const closeNav = () => { nav.classList.remove('open'); toggle.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); };
+      toggle.addEventListener('click', function () {
+        const isOpen = nav.classList.toggle('open');
+        toggle.classList.toggle('open', isOpen);
+        toggle.setAttribute('aria-expanded', String(isOpen));
+      });
+      nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+      document.addEventListener('click', e => {
+        if (!nav.classList.contains('open')) return;
+        if (!nav.contains(e.target) && !toggle.contains(e.target)) closeNav();
+      });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
+    })();
+
+    (function () {
+      const slides = document.querySelectorAll('.hero__slide');
+      const dots = document.querySelectorAll('.hero__dot');
+      if (slides.length < 2) return;
+      let current = 0;
+      function showSlide(index) {
+        current = index;
+        slides.forEach((s, i) => s.classList.toggle('is-active', i === current));
+        dots.forEach((d, i) => d.classList.toggle('is-active', i === current));
+      }
+      dots.forEach((dot, i) => dot.addEventListener('click', () => showSlide(i)));
+      window.setInterval(() => showSlide((current + 1) % slides.length), 5000);
+    })();
+  </script>
+</body>
+
+</html><script async src="/.netlify/scripts/hud?variant=owner-private" data-nf-variant="owner-private" data-netlify-site-id="ce476d40-e7eb-4ad9-831c-4a142a104ef9" data-app-host="app.netlify.com"></script>
