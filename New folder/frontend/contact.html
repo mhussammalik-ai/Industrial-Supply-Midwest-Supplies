@@ -4,14 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Contact Us – Midwest Supplies</title>
+    <title>Contact Us – Midwest Supplies LLC</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./midwest-supplies-logo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
         :root {
@@ -77,15 +80,26 @@
             position: relative;
         }
 
+        /* Updated logo area */
         .site-logo a {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .site-logo img {
             height: 56px;
             width: auto;
+        }
+
+        .site-logo__text {
+            font-family: 'Oswald', sans-serif;
+            color: var(--cream);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            white-space: nowrap;
         }
 
         .nav-primary {
@@ -164,9 +178,11 @@
             content: "";
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg,
-                    rgba(20, 16, 13, 0.75),
-                    rgba(20, 16, 13, 0.9));
+            background: linear-gradient(
+                180deg,
+                rgba(20, 16, 13, 0.75),
+                rgba(20, 16, 13, 0.9)
+            );
         }
 
         .hero__slide.is-active {
@@ -233,36 +249,84 @@
             padding: 50px 0 70px;
         }
 
+        /* QUICK CONTACT TOOLBAR */
         .quick-contact {
             display: flex;
-            justify-content: center;
-            gap: 18px;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
             margin-bottom: 40px;
         }
 
-        .quick-contact a {
+        .quick-contact__label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .quick-contact__row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: stretch;
+            gap: 10px;
+        }
+
+        .quick-contact__email {
             display: inline-flex;
             align-items: center;
             gap: 10px;
             background: #fff;
-            border: 1px solid rgba(20, 16, 13, 0.1);
-            padding: 14px 22px;
+            border: 1px solid rgba(20, 16, 13, 0.12);
+            padding: 12px 18px;
             border-radius: 8px;
             font-weight: 600;
             font-size: 0.92rem;
+            color: var(--dark);
+            user-select: all;
+            -webkit-user-select: all;
             box-shadow: 0 4px 16px rgba(20, 16, 13, 0.05);
-            transition: 0.2s;
         }
 
-        .quick-contact a:hover {
+        .quick-contact__email i {
+            color: var(--orange);
+            font-size: 1.05rem;
+        }
+
+        .quick-contact__btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            border: 1px solid rgba(20, 16, 13, 0.12);
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: var(--dark);
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 4px 16px rgba(20, 16, 13, 0.05);
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .quick-contact__btn i {
+            color: var(--orange);
+            font-size: 0.95rem;
+        }
+
+        .quick-contact__btn:hover {
             border-color: var(--orange);
             transform: translateY(-2px);
+            color: var(--dark);
         }
 
-        .quick-contact i {
-            color: var(--orange);
-            font-size: 1.1rem;
+        .quick-contact__btn:active {
+            transform: translateY(0);
         }
 
         /* FORM */
@@ -331,6 +395,97 @@
             min-height: 130px;
         }
 
+        /* CUSTOM CAPTCHA */
+        .captcha-group {
+            margin-top: 8px;
+            margin-bottom: 20px;
+        }
+
+        .captcha-display {
+            display: flex;
+            align-items: stretch;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .captcha-canvas-wrap {
+            background: var(--cream-2);
+            border: 1px solid #e0dccf;
+            border-radius: 8px;
+            overflow: hidden;
+            line-height: 0;
+            max-width: 100%;
+        }
+
+        #captchaCanvas {
+            display: block;
+            width: 220px;
+            height: 70px;
+            max-width: 100%;
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .captcha-refresh {
+            flex: 0 0 auto;
+            width: 48px;
+            border: 1px solid #e0dccf;
+            border-radius: 8px;
+            background: #fff;
+            color: var(--muted);
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: color 0.2s, border-color 0.2s, transform 0.3s;
+        }
+
+        .captcha-refresh:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+            transform: rotate(180deg);
+        }
+
+        .captcha-refresh:active {
+            transform: rotate(180deg) scale(0.94);
+        }
+
+        #captchaInput {
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .captcha-note {
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin-top: 8px;
+        }
+
+        .captcha-error {
+            display: none;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #b3261e;
+            margin-top: 6px;
+        }
+
+        .captcha-error.show {
+            display: block;
+        }
+
+        @keyframes captchaShake {
+            0%, 100% { transform: translateX(0); }
+            20%      { transform: translateX(-6px); }
+            40%      { transform: translateX(6px); }
+            60%      { transform: translateX(-4px); }
+            80%      { transform: translateX(4px); }
+        }
+
+        .captcha-shake {
+            animation: captchaShake 0.4s ease;
+        }
+
+        /* SUBMIT BUTTON */
         .btn-submit {
             width: 100%;
             padding: 14px;
@@ -384,30 +539,54 @@
         .site-footer {
             background: var(--dark);
             color: rgba(255, 255, 255, 0.75);
-            padding: 50px 0 0;
+            padding: 60px 0 0;
             margin-top: 20px;
         }
 
         .footer-grid {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px 34px;
+            padding: 0 20px 40px;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: 1.5fr 1fr 1.4fr;
+            gap: 50px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .footer-brand img {
-            height: 60px;
+        /* Footer brand link (logo + name) */
+        .footer-brand__link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            transition: opacity 0.2s ease;
+        }
+
+        .footer-brand__link:hover {
+            opacity: 0.85;
+        }
+
+        .footer-brand__link img {
+            height: 56px;
             width: auto;
-            margin-bottom: 14px;
+            display: block;
+        }
+
+        .footer-brand__name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--cream);
+            white-space: nowrap;
+            line-height: 1.2;
         }
 
         .footer-brand p {
             font-size: 0.9rem;
-            max-width: 340px;
-            line-height: 1.7;
+            max-width: 380px;
+            line-height: 1.75;
             opacity: 0.7;
         }
 
@@ -415,10 +594,22 @@
             color: #fff;
             font-size: 1rem;
             font-weight: 600;
-            margin-bottom: 14px;
+            margin-bottom: 20px;
             font-family: 'Oswald', sans-serif;
             text-transform: uppercase;
             letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .site-footer h4::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 32px;
+            height: 2px;
+            background: var(--orange);
         }
 
         .site-footer ul {
@@ -426,26 +617,68 @@
         }
 
         .site-footer ul li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .site-footer ul a {
-            color: rgba(255, 255, 255, 0.65);
+            color: rgba(255, 255, 255, 0.68);
             transition: color 0.2s;
             font-size: 0.9rem;
+            display: inline-block;
         }
 
         .site-footer ul a:hover {
             color: var(--orange);
         }
 
+        /* Contact list with icons */
+        .footer-contact li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 0.9rem;
+        }
+
+        .footer-contact li i {
+            color: var(--orange);
+            font-size: 0.95rem;
+            margin-top: 4px;
+            width: 16px;
+            flex-shrink: 0;
+            text-align: center;
+        }
+
+        .footer-contact li a,
+        .footer-contact li span {
+            color: rgba(255, 255, 255, 0.68);
+            transition: color 0.2s;
+            line-height: 1.5;
+        }
+
+        .footer-contact li a:hover {
+            color: var(--orange);
+        }
+
         .footer-bottom {
-            padding: 20px 0;
+            padding: 22px 0;
             text-align: center;
             font-size: 0.85rem;
             opacity: 0.55;
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        /* TABLET */
+        @media (max-width: 992px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 36px;
+            }
+
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
         }
 
         /* MOBILE */
@@ -497,6 +730,52 @@
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
+
+            .footer-brand {
+                grid-column: auto;
+            }
+
+            .footer-brand__link {
+                gap: 10px;
+            }
+
+            .footer-brand__link img {
+                height: 44px;
+            }
+
+            .footer-brand__name {
+                font-size: 0.9rem;
+                white-space: normal;
+            }
+        }
+
+        @media (max-width: 400px) {
+            #captchaCanvas {
+                width: 180px;
+                height: 62px;
+            }
+
+            .captcha-refresh {
+                width: 42px;
+            }
+
+            .quick-contact__row {
+                width: 100%;
+            }
+
+            .quick-contact__btn,
+            .quick-contact__email {
+                flex: 1 1 auto;
+                justify-content: center;
+            }
+
+            /* Adjust logo text for small screens */
+            .site-logo__text {
+                font-size: 0.9rem;
+            }
+            .site-logo img {
+                height: 48px;
+            }
         }
     </style>
 </head>
@@ -506,160 +785,317 @@
     <!-- HEADER -->
     <header class="site-header">
         <div class="container">
+
             <div class="site-logo">
-                <a href='/'>
-                    <img src="./midwest-supplies-logo.png" alt="Midwest Supplies">
+                <a href="./index.html">
+                    <img src="./midwest-supplies-logo.png" alt="Midwest Supplies LLC">
+                    <span class="site-logo__text">Midwest Supplies LLC</span>
                 </a>
             </div>
 
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                <span class="menu-icon"><i class="fas fa-bars"></i></span>
-                <span class="close-icon"><i class="fas fa-times"></i></span>
+                <span class="menu-icon">
+                    <i class="fas fa-bars"></i>
+                </span>
+
+                <span class="close-icon">
+                    <i class="fas fa-times"></i>
+                </span>
             </button>
 
             <nav class="nav-primary" id="navPrimary">
-                <a href='./index.html'>Home</a>
-                <a href='./brands.html'>Our Brands</a>
-                <a class='active' href='./contact.html'>Contact</a>
+                <a href="./index.html">Home</a>
+                <a href="./brands.html">Our Brands</a>
+                <a class="active" href="./Contact.html">Contact</a>
             </nav>
+
         </div>
     </header>
 
     <!-- HERO -->
     <section class="hero" id="main-content">
+
         <div class="hero__slider" aria-label="Featured slides">
+
             <div class="hero__slide is-active"
                 style="background-image:url('https://images.unsplash.com/photo-1642285709726-f9eb035b034b?fm=jpg&q=60&w=1600&auto=format&fit=crop');">
             </div>
+
             <div class="hero__slide"
                 style="background-image:url('https://images.unsplash.com/photo-1757271453507-bbee317318a8?fm=jpg&q=60&w=1600&auto=format&fit=crop');">
             </div>
+
         </div>
 
         <div class="container">
+
             <span class="eyebrow">Get In Touch</span>
+
             <h1>Contact Us</h1>
+
             <p>
                 Fill in the form below and we will contact you.
                 We endeavour to answer all inquiries within 24 hours
                 on business days.
             </p>
+
         </div>
 
         <div class="hero__controls" aria-label="Choose hero slide">
-            <button class="hero__dot is-active" type="button" aria-label="Show slide 1"></button>
-            <button class="hero__dot" type="button" aria-label="Show slide 2"></button>
+
+            <button class="hero__dot is-active"
+                type="button"
+                aria-label="Show slide 1">
+            </button>
+
+            <button class="hero__dot"
+                type="button"
+                aria-label="Show slide 2">
+            </button>
+
         </div>
+
     </section>
 
     <!-- CONTACT SECTION -->
     <section class="contact-wrap">
+
         <div class="container">
 
+            <!-- QUICK CONTACT TOOLBAR -->
             <div class="quick-contact">
-                <a href="mailto:sales@mw-supplies.com">
-                    <i class="fas fa-envelope"></i>
-                    sales@mw-supplies.com
-                </a>
+                <span class="quick-contact__label">Email us</span>
+                <div class="quick-contact__row">
+                    <!-- Visible, selectable email address -->
+                    <span class="quick-contact__email" id="emailText">
+                        <i class="fas fa-envelope"></i>
+                        sales@mw-supplies.com
+                    </span>
+                </div>
             </div>
 
             <div class="request-form">
+
                 <h2>Request Form</h2>
+
                 <p class="form-sub">
                     Tell us what you're looking for and a member
                     of our team will get back to you.
                 </p>
 
-                <form id="contactForm" autocomplete="on">
+                <form id="contactForm" autocomplete="on" novalidate>
 
+                    <!-- NAME + COMPANY -->
                     <div class="form-row-2">
+
                         <div class="form-group">
                             <label for="formName">Name</label>
-                            <input type="text" id="formName" name="name" placeholder="Your name" autocomplete="name"
+                            <input
+                                type="text"
+                                id="formName"
+                                name="name"
+                                placeholder="Your name"
+                                autocomplete="name"
+                                pattern="[A-Za-z ]+"
+                                title="Please use letters and spaces only."
+                                onkeypress="return /[A-Za-z ]/.test(String.fromCharCode(event.which))"
                                 required>
                         </div>
+
                         <div class="form-group">
                             <label for="formCompany">Company</label>
-                            <input type="text" id="formCompany" name="company" placeholder="Company name"
+                            <input
+                                type="text"
+                                id="formCompany"
+                                name="company"
+                                placeholder="Company name"
                                 autocomplete="organization">
                         </div>
+
                     </div>
 
+                    <!-- EMAIL + PHONE -->
                     <div class="form-row-2">
+
                         <div class="form-group">
                             <label for="formEmail">Email</label>
-                            <input type="email" id="formEmail" name="email" placeholder="your@email.com"
-                                autocomplete="email" required>
+                            <input
+                                type="email"
+                                id="formEmail"
+                                name="email"
+                                placeholder="your@email.com"
+                                autocomplete="email"
+                                required>
                         </div>
+
                         <div class="form-group">
                             <label for="formPhone">Phone</label>
-                            <input type="tel" id="formPhone" name="phone" placeholder="+00 000 000 0000"
-                                autocomplete="tel">
+                            <input
+                                type="tel"
+                                id="formPhone"
+                                name="phone"
+                                placeholder="+00 000 000 0000"
+                                autocomplete="tel"
+                                inputmode="numeric"
+                                pattern="[0-9]*"
+                                title="Please enter numbers only."
+                                onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                         </div>
+
                     </div>
 
+                    <!-- SUBJECT -->
                     <div class="form-group">
                         <label for="formSubject">Subject</label>
-                        <input type="text" id="formSubject" name="topic" placeholder="What are you looking for?"
+                        <input
+                            type="text"
+                            id="formSubject"
+                            name="subject"
+                            placeholder="What are you looking for?"
                             required>
                     </div>
 
+                    <!-- MESSAGE -->
                     <div class="form-group">
                         <label for="formMessage">Message</label>
-                        <textarea id="formMessage" name="message"
-                            placeholder="Add part numbers, quantities, or any other details" rows="5"
+                        <textarea
+                            id="formMessage"
+                            name="message"
+                            placeholder="Add part numbers, quantities, or any other details"
+                            rows="5"
                             required></textarea>
                     </div>
 
-                    <!-- Honeypot: hidden from real visitors, bots often fill it in anyway -->
-                    <div style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true">
+                    <!-- HONEYPOT -->
+                    <div style="position:absolute;left:-9999px;" aria-hidden="true">
                         <label for="formWebsite">Leave this field empty</label>
                         <input type="text" id="formWebsite" name="website" tabindex="-1" autocomplete="off">
                     </div>
 
-                    <button type="submit" class="btn-submit" id="submitBtn">Send Request</button>
+                    <!-- CUSTOM CAPTCHA -->
+                    <div class="captcha-group" id="captchaGroup">
 
-                    <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+                        <label for="captchaInput">Verification</label>
+
+                        <div class="captcha-display">
+                            <div class="captcha-canvas-wrap">
+                                <canvas
+                                    id="captchaCanvas"
+                                    width="220"
+                                    height="70"
+                                    role="img"
+                                    aria-label="CAPTCHA challenge image. Click to refresh.">
+                                </canvas>
+                            </div>
+
+                            <button
+                                type="button"
+                                class="captcha-refresh"
+                                id="captchaRefresh"
+                                aria-label="Get a new CAPTCHA code"
+                                title="New code">
+                                <i class="fas fa-rotate-right"></i>
+                            </button>
+                        </div>
+
+                        <input
+                            type="text"
+                            id="captchaInput"
+                            name="captcha"
+                            placeholder="Type the characters shown above"
+                            autocomplete="off"
+                            autocapitalize="off"
+                            spellcheck="false"
+                            required>
+
+                        <p class="captcha-note">
+                            Not case-sensitive. Click the image or the refresh
+                            button for a new code.
+                        </p>
+
+                        <p class="captcha-error" id="captchaError" role="alert"></p>
+
+                    </div>
+
+                    <!-- SUBMIT -->
+                    <button
+                        type="submit"
+                        class="btn-submit"
+                        id="submitBtn">
+                        Send Request
+                    </button>
+
+                    <!-- STATUS -->
+                    <div
+                        class="form-status"
+                        id="formStatus"
+                        role="status"
+                        aria-live="polite">
+                    </div>
 
                 </form>
+
             </div>
 
         </div>
+
     </section>
 
     <!-- FOOTER -->
     <footer class="site-footer">
+
         <div class="footer-grid">
+
             <div class="footer-brand">
-                <img src="./midwest-supplies-logo.png" alt="Midwest Supplies">
+                <a href="./index.html" class="footer-brand__link" aria-label="Midwest Supplies LLC – go to home page">
+                    <img src="./midwest-supplies-logo.png" alt="Midwest Supplies LLC">
+                    <span class="footer-brand__name">Midwest Supplies LLC</span>
+                </a>
                 <p>
-                    Midwest Supplies is a leading industrial materials
+                    Midwest Supplies LLC is a leading industrial materials
                     and equipment supplier located in Illinois, USA,
                     specializing in innovative solutions for the energy
                     and process industries.
                 </p>
             </div>
 
-            <div>
+            <div class="footer-col">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href='/'>Home</a></li>
-                    <li><a href='/brands'>Our Brands</a></li>
-                    <li><a href='/contact'>Contact</a></li>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./brands.html">Our Brands</a></li>
+                    <li><a href="./Contact.html">Contact Us</a></li>
                 </ul>
             </div>
 
-            <div>
+            <div class="footer-col">
                 <h4>Get In Touch</h4>
-                <ul>
-                    <li><a href="mailto:sales@mw-supplies.com">sales@mw-supplies.com</a></li>
+                <ul class="footer-contact">
+                    <li>
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=sales@mw-supplies.com"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            sales@mw-supplies.com
+                        </a>
+                    </li>
+                    <li>
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <span>Illinois, USA</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-clock" aria-hidden="true"></i>
+                        <span>Mon – Fri · 8:00 – 17:00 CST</span>
+                    </li>
                 </ul>
             </div>
+
         </div>
 
         <div class="footer-bottom">
-            <p>Copyright &copy; 2026 Midwest Supplies. All rights reserved.</p>
+            <p>Copyright &copy; 2026 Midwest Supplies LLC. All rights reserved.</p>
         </div>
+
     </footer>
 
     <!-- MOBILE NAVIGATION -->
@@ -683,12 +1119,197 @@
         })();
     </script>
 
-    <!-- CONTACT FORM: Submits to our own backend API -->
+    <!-- CUSTOM CAPTCHA MODULE -->
+    <script>
+        window.CustomCaptcha = (function () {
+            const canvas = document.getElementById('captchaCanvas');
+            const input = document.getElementById('captchaInput');
+            const refreshBtn = document.getElementById('captchaRefresh');
+            const errorEl = document.getElementById('captchaError');
+
+            if (!canvas || !input) return null;
+
+            const ctx = canvas.getContext('2d');
+            const CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789';
+            const CODE_LENGTH = 6;
+            let currentCode = '';
+
+            function randomInt(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+
+            function randomChar() {
+                return CHARS.charAt(randomInt(0, CHARS.length - 1));
+            }
+
+            function generateCode() {
+                let code = '';
+                for (let i = 0; i < CODE_LENGTH; i++) {
+                    code += randomChar();
+                }
+                return code;
+            }
+
+            function randomColor(alpha) {
+                const r = randomInt(70, 200);
+                const g = randomInt(70, 200);
+                const b = randomInt(70, 200);
+                const a = alpha === undefined ? 1 : alpha;
+                return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+            }
+
+            function drawBackground() {
+                const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                grad.addColorStop(0, '#f0e8d8');
+                grad.addColorStop(1, '#e3d8c0');
+                ctx.fillStyle = grad;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.save();
+                ctx.strokeStyle = 'rgba(120, 100, 70, 0.06)';
+                ctx.lineWidth = 1;
+                for (let x = -canvas.height; x < canvas.width; x += 9) {
+                    ctx.beginPath();
+                    ctx.moveTo(x, 0);
+                    ctx.lineTo(x + canvas.height, canvas.height);
+                    ctx.stroke();
+                }
+                ctx.restore();
+            }
+
+            function drawNoiseLines(count) {
+                for (let i = 0; i < count; i++) {
+                    ctx.beginPath();
+                    ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
+                    ctx.bezierCurveTo(
+                        Math.random() * canvas.width, Math.random() * canvas.height,
+                        Math.random() * canvas.width, Math.random() * canvas.height,
+                        Math.random() * canvas.width, Math.random() * canvas.height
+                    );
+                    ctx.strokeStyle = randomColor(0.45);
+                    ctx.lineWidth = Math.random() * 1.6 + 0.5;
+                    ctx.stroke();
+                }
+            }
+
+            function drawNoiseDots(count) {
+                for (let i = 0; i < count; i++) {
+                    ctx.beginPath();
+                    ctx.arc(
+                        Math.random() * canvas.width,
+                        Math.random() * canvas.height,
+                        Math.random() * 1.8 + 0.4,
+                        0, Math.PI * 2
+                    );
+                    ctx.fillStyle = randomColor(0.5);
+                    ctx.fill();
+                }
+            }
+
+            function drawCharacters() {
+                const slotWidth = canvas.width / (CODE_LENGTH + 0.8);
+                const baseFontSize = 30;
+
+                for (let i = 0; i < currentCode.length; i++) {
+                    ctx.save();
+                    const x = slotWidth * (i + 0.7) + randomInt(-4, 4);
+                    const y = canvas.height / 2 + randomInt(-5, 5);
+                    ctx.translate(x, y);
+                    ctx.rotate((Math.random() - 0.5) * 0.55);
+                    const fontSize = baseFontSize + randomInt(-4, 6);
+                    ctx.font = '700 ' + fontSize + 'px Oswald, Poppins, Arial, sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    const hue = randomInt(10, 40);
+                    const sat = randomInt(55, 85);
+                    const light = randomInt(18, 38);
+                    ctx.fillStyle = 'hsl(' + hue + ',' + sat + '%,' + light + '%)';
+                    ctx.shadowColor = 'rgba(0, 0, 0, 0.18)';
+                    ctx.shadowBlur = 2;
+                    ctx.shadowOffsetX = randomInt(-1, 1);
+                    ctx.shadowOffsetY = randomInt(-1, 1);
+                    ctx.fillText(currentCode.charAt(i), 0, 0);
+                    ctx.restore();
+                }
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                drawBackground();
+                drawCharacters();
+                drawNoiseLines(4);
+                drawNoiseDots(45);
+            }
+
+            function setError(message) {
+                if (!errorEl) return;
+                if (message) {
+                    errorEl.textContent = message;
+                    errorEl.classList.add('show');
+                } else {
+                    errorEl.textContent = '';
+                    errorEl.classList.remove('show');
+                }
+            }
+
+            function shake() {
+                const wrap = canvas.parentElement;
+                if (!wrap) return;
+                wrap.classList.remove('captcha-shake');
+                void wrap.offsetWidth;
+                wrap.classList.add('captcha-shake');
+                window.setTimeout(function () {
+                    wrap.classList.remove('captcha-shake');
+                }, 450);
+            }
+
+            function reset() {
+                currentCode = generateCode();
+                draw();
+                if (input) input.value = '';
+                setError('');
+            }
+
+            function validate() {
+                const value = (input.value || '').trim();
+                if (!value) {
+                    setError('Please enter the verification code.');
+                    shake();
+                    input.focus();
+                    return false;
+                }
+                if (value.toLowerCase() !== currentCode.toLowerCase()) {
+                    setError('Incorrect code. A new code has been generated — please try again.');
+                    shake();
+                    reset();
+                    input.focus();
+                    return false;
+                }
+                setError('');
+                return true;
+            }
+
+            if (refreshBtn) refreshBtn.addEventListener('click', reset);
+            canvas.addEventListener('click', reset);
+            input.addEventListener('input', function () { setError(''); });
+
+            reset();
+
+            if (document.fonts && document.fonts.ready) {
+                document.fonts.ready.then(function () { draw(); });
+            }
+
+            return {
+                validate: validate,
+                reset: reset,
+                getCode: function () { return currentCode; }
+            };
+        })();
+    </script>
+
+    <!-- CONTACT FORM SUBMISSION -->
     <script>
         (function () {
-            // Point this at your deployed backend, e.g. "https://api.mw-supplies.com/submit-form"
-            const API_URL = 'https://YOUR-BACKEND-DOMAIN/submit-form';
-
             const form = document.getElementById('contactForm');
             const btn = document.getElementById('submitBtn');
             const status = document.getElementById('formStatus');
@@ -700,49 +1321,66 @@
                 status.className = 'form-status show ' + type;
             }
 
-            form.addEventListener('submit', function (event) {
+            function clearStatus() {
+                status.textContent = '';
+                status.className = 'form-status';
+            }
+
+            form.addEventListener('submit', async function (event) {
                 event.preventDefault();
+                clearStatus();
+
+                // 1. Check native HTML validation first (required fields, email format, etc.)
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+
+                // 2. Check CAPTCHA validation
+                if (!window.CustomCaptcha || !window.CustomCaptcha.validate()) {
+                    const group = document.getElementById('captchaGroup');
+                    if (group) group.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    return;
+                }
 
                 btn.disabled = true;
                 btn.textContent = 'Sending...';
-                status.className = 'form-status';
 
-                const payload = {
+                const formData = {
                     name: document.getElementById('formName').value,
                     company: document.getElementById('formCompany').value,
                     email: document.getElementById('formEmail').value,
                     phone: document.getElementById('formPhone').value,
                     subject: document.getElementById('formSubject').value,
                     message: document.getElementById('formMessage').value,
-                    website: document.getElementById('formWebsite').value, // honeypot, should stay empty
-                    pageUrl: window.location.href
+                    website: document.getElementById('formWebsite').value,
+                    captchaToken: 'custom-captcha-verified'
                 };
 
-                fetch(API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                })
-                    .then(function (response) {
-                        return response.json().then(function (data) {
-                            if (!response.ok || !data.ok) {
-                                throw new Error(data.error || 'Request failed');
-                            }
-                            return data;
-                        });
-                    })
-                    .then(function () {
+                try {
+                    const response = await fetch('/send-email', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData)
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok && result.success) {
                         showStatus('Thank you! Your message has been sent successfully. We will get back to you shortly.', 'success');
                         form.reset();
-                    })
-                    .catch(function (error) {
-                        console.log('FAILED...', error);
-                        showStatus('Failed to send your request. Please try again or email sales@mw-supplies.com directly.', 'error');
-                    })
-                    .finally(function () {
-                        btn.disabled = false;
-                        btn.textContent = 'Send Request';
-                    });
+                        if (window.CustomCaptcha) window.CustomCaptcha.reset();
+                    } else {
+                        throw new Error(result.message || 'Failed to send email');
+                    }
+                } catch (error) {
+                    console.error('Email error:', error);
+                    showStatus(error.message || 'There was a problem sending your message. Please try again.', 'error');
+                    if (window.CustomCaptcha) window.CustomCaptcha.reset();
+                } finally {
+                    btn.disabled = false;
+                    btn.textContent = 'Send Request';
+                }
             });
         })();
     </script>
@@ -768,9 +1406,7 @@
             }
 
             dots.forEach(function (dot, index) {
-                dot.addEventListener('click', function () {
-                    showSlide(index);
-                });
+                dot.addEventListener('click', function () { showSlide(index); });
             });
 
             window.setInterval(function () {
@@ -780,5 +1416,4 @@
     </script>
 
 </body>
-
 </html>
